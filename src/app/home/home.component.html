@@ -1,0 +1,72 @@
+<mat-toolbar color="primary">
+  <i class="material-icons">fingerprint</i>
+  <span>Validació de Documents</span>
+  <span class="spacer"></span>
+  <a href="https://eetac.upc.edu/ca" target="_blank"><img src="../../assets/image.png" height="50" width="50" style="margin-left: 0.5em; margin-right: 0.5em"></a>
+  <button mat-button><i class="fab fa-github"></i> GitHub</button>
+</mat-toolbar>
+
+<div class="container">
+  <div class="row">
+    <div class="function col-md-12">
+      <h2 style="text-align: center; margin-bottom: 0.5em">Estampació d'un nou document</h2>
+      <mat-card class="card col-md-6">
+        <mat-card-title>Carrega el document a estampar!</mat-card-title>
+
+        <div class="upload-file">
+          <input type="file" id="file1" (change)="handleFileInput($event.target.files, 0)">
+        </div>
+        <h5 *ngIf="resultHash" style="font-size: 95%"><b>Hash:</b> {{resultHash}}</h5>
+
+        <button mat-raised-button color="primary" class="component-button" (click)="stampNewDoc()">Estampar</button>
+      </mat-card>
+      <div class="explanation col-md-6">
+        <p>Passos a seguir: </p>
+        <p>1. Carregar el document que es vol estampar.</p>
+        <p>2. Clicar al botó Estampar després que el hash del document aparegui.</p>
+        <p>3. Acceptar la transacció amb el Metamask i aparició del hash de la Transacció.</p>
+        <p>4. (opcional) Comprovar que la transacció s'ha verificat correctament introduint el hash de la Transacció aquí: <a href="https://rinkeby.etherscan.io/" target="_blank">https://rinkeby.etherscan.io/</a></p>
+      </div>
+    </div>
+    <div class="function">
+      <h2 style="text-align: center; margin-bottom: 0.5em">Validació/Comprovació d'un document</h2>
+      <div class="col-md-12">
+        <mat-card class="card col-md-6">
+          <mat-card-title>Carrega el document a verificar!</mat-card-title>
+
+          <div class="upload-file">
+            <input type="file" id="file" (change)="handleFileInput($event.target.files, 1)">
+          </div>
+
+          <h5 *ngIf="checkHash" style="font-size: 95%"><b>Hash:</b> {{checkHash}}</h5>
+
+          <button mat-raised-button color="primary" class="component-button" (click)="getStamp(checkHash)">Verificar</button>
+        </mat-card>
+        <div class="explanation col-md-6">
+          <p>Passos a seguir: </p>
+          <p>1. Càrrega del document del qual es vol verificar l'estampació.</p>
+          <p>2. Clicar al botó Verificar després que el hash del document aparegui.</p>
+          <p>3. Aparició de l'adreça de l'usuari que ha estampat el document.</p>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <mat-card class="card col-md-6">
+          <mat-card-title>Introdueix el hash del document a verificar!</mat-card-title>
+
+          <mat-form-field class="component-field">
+            <input matInput placeholder="Document Hash" #hashInput>
+            <mat-hint align="end">sha256</mat-hint>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" class="component-button" (click)="getStamp(hashInput.value)">Verificar</button>
+        </mat-card>
+        <div class="explanation col-md-6">
+          <p>Passos a seguir: </p>
+          <p>1. Introdueix el hash del qual es vol verificar l'estampació.</p>
+          <p>2. Clicar al botó Verificar.</p>
+          <p>3. Aparició de l'adreça de l'usuari que ha estampat el document.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

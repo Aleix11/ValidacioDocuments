@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+[routerLink]{
+  cursor: pointer;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  font-family: Roboto, 'Helvetice New', 'Arial', sans-serif
+}
